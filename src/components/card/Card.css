@@ -1,0 +1,23 @@
+.mtg-card {
+
+  .mtg-card-inner{
+    display: grid;
+    transform-style: preserve-3d;
+    background: none;
+
+    .front, .back {
+      border-radius: 1rem;
+      width: 100%;
+      grid-row: 1;
+      grid-column: 1;
+      backface-visibility: hidden !important;
+      z-index: 2;
+    }
+
+    .back {
+      z-index: 0;
+      transform: rotateY(180deg) translateZ(-1px);
+    }
+  }
+}
+
