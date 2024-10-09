@@ -1,1 +1,2 @@
-export * from './ScryfallCard';
+export * from './Scryfall';
+export * from './CardData';

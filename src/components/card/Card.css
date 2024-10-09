@@ -8,6 +8,7 @@
     .front, .back {
       border-radius: 1rem;
       width: 100%;
+      aspect-ratio: 1 / 1.4;
       grid-row: 1;
       grid-column: 1;
       backface-visibility: hidden !important;

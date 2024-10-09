@@ -1,3 +1,11 @@
+export interface ScryfallCardSearch {
+  object:      string;
+  total_cards: number;
+  has_more:    boolean;
+  next_page:   string;
+  data:        ScryfallCard[];
+}
+
 export interface ScryfallCard {
   object:            string;
   id:                string;
@@ -9,6 +17,7 @@ export interface ScryfallCard {
   cardmarket_id:     number;
   name:              string;
   lang:              string;
+  card_faces:        CardFace[];
   released_at:       Date;
   uri:               string;
   scryfall_uri:      string;
@@ -66,6 +75,29 @@ export interface ScryfallCard {
   prices:            Prices;
   related_uris:      RelatedUris;
   purchase_uris:     PurchaseUris;
+}
+
+export interface CardFace {
+  object:            string;
+  name:              string; 
+  mana_cost:         string;
+  oracle_id?:         string;
+  oracle_text?:       string;
+  image_uris?:        ImageUris;
+  cmc?:               number;
+  type_line?:         string;
+  power?:             string;
+  toughness?:         string;
+  defense?:           string;
+  colors?:            string[];
+  color_indicators?:  string[];  
+  flavor_text?:       string;
+  artist?:           string;
+  artist_id?:        string;
+  illustration_id?:   string;  
+  printed_name?:      string;
+  printed_text?:      string;
+  printed_type_line?: string;
 }
 
 export interface ImageUris {

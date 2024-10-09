@@ -1,0 +1,20 @@
+.card-list-row {
+  width: 100%;
+  display: flex;
+  background-color: #D9D9D9;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 2px 1px rgba(0, 0, 0, 0.1);
+
+  & > p.card-name, & > p.card-type {
+    font-size: 1.5rem;
+  }
+
+  .mana-cost {
+    display: flex;
+
+    img {
+      width: 2rem;
+    }
+  }
+}

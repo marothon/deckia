@@ -1,0 +1,19 @@
+.card-list {
+
+  &.image{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+
+    .card-list-item {
+      width: 30%;
+    }
+  }
+
+  &.row{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
