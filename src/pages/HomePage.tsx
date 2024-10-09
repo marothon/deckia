@@ -1,4 +1,5 @@
-import { Card } from '../components/card/Card';
+import { CardSearch } from '../components/card-search';
+import { Card } from '../components/card';
 import { ScryfallCard } from '../shared/interfaces';
 import './css/HomePage.css';
 import { useLoaderData } from 'react-router-dom';
@@ -29,7 +30,9 @@ export default function HomePage() {
           Vestibulum ut blandit est. Integer nibh velit, congue vitae dui quis, facilisis mollis dolor. Ut nec dictum ipsum. Praesent ac blandit enim, at euismod dolor. Integer sed sagittis libero.
         </p>
       </section>
-        
+      <section className="search">
+        <CardSearch title='Search'/>
+      </section>
     </div>
   )
 }
