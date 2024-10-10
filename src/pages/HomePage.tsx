@@ -1,12 +1,12 @@
 import { CardSearch } from '../components/card-search';
 import { Card } from '../components/card';
-import { ScryfallCard } from '../shared/interfaces';
+import { CardData } from '../shared/interfaces';
 import './css/HomePage.css';
 import { useLoaderData } from 'react-router-dom';
 import { useRef } from 'react';
 
 export default function HomePage() {
-  const card = useLoaderData() as ScryfallCard;
+  const card = useLoaderData() as CardData;
   const searchBar = useRef<HTMLInputElement>(null);
 
   const onSearchActionClick = () => {
@@ -26,7 +26,7 @@ export default function HomePage() {
               <button onClick={onSearchActionClick}>Search <span className='material-symbols-outlined'>search</span></button>
             </div>
           </section>
-          <Card className='hero-card' cardImgURL={card.image_uris.normal} />
+          <Card className='hero-card' card={card} />
         </section>
       </section>
       <section className="about">

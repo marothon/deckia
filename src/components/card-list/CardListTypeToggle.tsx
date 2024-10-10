@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './CardListTypeToggle.css';
+import './css/CardListTypeToggle.css';
 
 export function CardListTypeToggle({onToggle}: {onToggle: Function}) {
   const [isImage, setIsImage] = useState<boolean>(true);

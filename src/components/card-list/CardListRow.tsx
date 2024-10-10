@@ -1,13 +1,15 @@
 import { translateSymbols } from "../../shared/data";
 import { CardData } from "../../shared/interfaces";
-import './CardListRow.css';
+import { CardActionList } from "../card/CardActionList";
+import './css/CardListRow.css';
 
-export function CardListRow({cardData}: {cardData: CardData}) {
+export function CardListRow({card}: {card: CardData}) {
   return (
     <div className='card-list-row'>
-      <p className='card-name'>{cardData.name}</p>
-      <div className='mana-cost'>{cardData.mana_cost ? translateSymbols(cardData.mana_cost): ''}</div>
-      <p className='card-type'>{cardData.type_line}</p>
+      <p className='card-name'>{card.name}</p>
+      <div className='mana-cost'>{card.mana_cost ? translateSymbols(card.mana_cost): ''}</div>
+      <p className='card-type'>{card.type_line}</p>
+      <CardActionList className='card-list-row-actions' card={card}/>
     </div>
   )
 }

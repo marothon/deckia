@@ -4,7 +4,7 @@
     display: grid;
     transform-style: preserve-3d;
     background: none;
-
+    
     .front, .back {
       border-radius: 1rem;
       width: 100%;
@@ -13,6 +13,24 @@
       grid-column: 1;
       backface-visibility: hidden !important;
       z-index: 2;
+    }
+
+    .mtg-card-actions {
+      transition: opacity 0.15s linear;
+      opacity: 0;
+      grid-row: 1;
+      grid-column: 1;
+      z-index: 3;
+      font-size: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      backface-visibility: hidden;
+      border-radius: 0 0 1rem 1rem;
+    }
+
+    &:hover {
+      .mtg-card-actions {
+        opacity: 1;
+      }
     }
 
     .back {

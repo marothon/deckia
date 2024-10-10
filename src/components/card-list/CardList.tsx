@@ -1,7 +1,7 @@
 import { CardData } from "../../shared/interfaces"
 import { Card } from "../card/Card";
 import { CardListRow } from "./CardListRow";
-import "./CardList.css";
+import "./css/CardList.css";
 
 interface CardListProps{
   cards: CardData[],
@@ -16,8 +16,8 @@ export function CardList({cards, listType}: CardListProps) {
           <article key={cd.id} className='card-list-item'>
             {
               listType == 'image' ?
-              <Card cardImgURL={cd.img_url} /> :
-              <CardListRow cardData={cd} />
+              <Card card={cd} enableActions={true}/> :
+              <CardListRow card={cd} />
             }
           </article>
         )

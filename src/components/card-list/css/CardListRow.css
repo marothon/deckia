@@ -13,6 +13,13 @@
     font-size: 1.3rem;
   }
 
+  & > .card-list-row-actions{
+    margin: auto;
+    color: black;
+    font-size: 3rem;
+    font-weight: 300;
+  }
+
   .mana-cost {
     display: flex;
 
