@@ -1,9 +1,9 @@
-import { FormEventHandler, useEffect, useState } from "react"
+import { FormEventHandler, forwardRef, Ref, useEffect, useState } from "react"
 import { CardData, ScryfallCardSearch } from "../../shared/interfaces";
 import { CardList, CardListTypeToggle } from "../card-list";
 import './CardSearch.css';
 
-export function CardSearch({title}: {title?: string}){
+export const CardSearch =  forwardRef(function CardSearch({title}: {title?: string}, ref: Ref<HTMLInputElement>){
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResult, setSearchResult] = useState<CardData[]>();
   const [listType, setListType] = useState<'image'|'row'>('image');
@@ -17,9 +17,9 @@ export function CardSearch({title}: {title?: string}){
           if(!c.image_uris && c.card_faces) {
             return {
               id: c.id,
-              name: c.name,
-              type_line: c.type_line,
-              mana_cost: c.mana_cost,
+              name: c.card_faces[0].name,
+              type_line: c.card_faces[0].type_line,
+              mana_cost: c.card_faces[0].mana_cost,
               img_url: c.card_faces[0].image_uris?.normal,
               keywords: c.keywords
               } as CardData;
@@ -54,7 +54,7 @@ export function CardSearch({title}: {title?: string}){
       <form onSubmit={onSubmit}>
         {title ? <h1>{title}</h1> : ''}
         <div className='search-bar'>
-          <input name='search-term' type='text' placeholder="Search"/>
+          <input ref={ref} name='search-term' type='text' placeholder="Search"/>
           <span className="search-indicator material-symbols-outlined">search</span>
         </div>
         <CardListTypeToggle onToggle={onToggle} />
@@ -62,4 +62,4 @@ export function CardSearch({title}: {title?: string}){
       { searchResult ? <CardList cards={searchResult} listType={listType} /> : '' }
     </div>
   )
-}
+});

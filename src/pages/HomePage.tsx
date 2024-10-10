@@ -3,9 +3,16 @@ import { Card } from '../components/card';
 import { ScryfallCard } from '../shared/interfaces';
 import './css/HomePage.css';
 import { useLoaderData } from 'react-router-dom';
+import { useRef } from 'react';
 
 export default function HomePage() {
   const card = useLoaderData() as ScryfallCard;
+  const searchBar = useRef<HTMLInputElement>(null);
+
+  const onSearchActionClick = () => {
+    searchBar.current?.focus();
+    searchBar.current?.scrollIntoView();
+  }
 
   return (
     <div className="home-page">
@@ -15,6 +22,9 @@ export default function HomePage() {
           <section className="description">
             <h1>Explore, choose and build</h1>
             <p>Search among thousands of MTG cards and create your own personal decks!</p>
+            <div className='search-action'>
+              <button onClick={onSearchActionClick}>Search <span className='material-symbols-outlined'>search</span></button>
+            </div>
           </section>
           <Card className='hero-card' cardImgURL={card.image_uris.normal} />
         </section>
@@ -31,7 +41,7 @@ export default function HomePage() {
         </p>
       </section>
       <section className="search">
-        <CardSearch title='Search'/>
+        <CardSearch ref={searchBar} title='Search'/>
       </section>
     </div>
   )
