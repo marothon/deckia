@@ -1,6 +1,6 @@
 export function translateSymbols(symbols: string){
-  return symbols.match(/({.*?})/g)?.map((b) => {
-    return <img src={symbology.get(b)!.svg_uri} />;
+  return symbols.match(/({.*?})/g)?.map((b, i) => {
+    return <img key={i} src={symbology.get(b)!.svg_uri} />;
   });
 }
 

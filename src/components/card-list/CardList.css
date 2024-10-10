@@ -3,11 +3,12 @@
   &.image{
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
+    gap: 0.5rem;
+    justify-content: center;
 
     .card-list-item {
-      width: 30%;
+      box-sizing: border-box;
+      width: 24.2%;
     }
   }
 

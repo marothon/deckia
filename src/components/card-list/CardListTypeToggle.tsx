@@ -5,10 +5,11 @@ export function CardListTypeToggle({onToggle}: {onToggle: Function}) {
   const [isImage, setIsImage] = useState<boolean>(true);
 
   const handleToggle = () => {
-    setIsImage((ii) => {
-      !ii ? onToggle('image') : onToggle('row');
-      return !ii;
-    });
+    setIsImage(!isImage);
+    if(!isImage)
+      onToggle('image')
+    else
+      onToggle('row');
   }
 
   return (
