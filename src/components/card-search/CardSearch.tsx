@@ -20,6 +20,7 @@ export const CardSearch =  forwardRef(function CardSearch({title}: {title?: stri
               name: c.card_faces[0].name,
               type_line: c.card_faces[0].type_line,
               mana_cost: c.card_faces[0].mana_cost,
+              color_identity: c.color_identity,
               img_url: c.card_faces[0].image_uris?.normal,
               keywords: c.keywords
               } as CardData;
@@ -29,6 +30,7 @@ export const CardSearch =  forwardRef(function CardSearch({title}: {title?: stri
               name: c.name,
               type_line: c.type_line,
               mana_cost: c.mana_cost,
+              color_identity: c.color_identity,
               img_url: c.image_uris.normal,
               keywords: c.keywords
               } as CardData

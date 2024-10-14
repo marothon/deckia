@@ -5,19 +5,21 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1rem 0 1rem;
   
   > a {
     height: fit-content;
     font-size: 1.5rem;
   }
+  
   nav {
     display: flex;
     gap: 1rem;
     align-items: center;
 
     a {
-      transition: all linear 0.2s;
-      border-bottom: 0rem solid black;
+      transition: all linear 0.1s;
+      border-bottom: 0.25rem solid rgba(0, 0, 0, 0);
       &.active{
         border-bottom: 0.25rem solid red;
       }

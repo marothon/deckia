@@ -7,13 +7,14 @@ import DeckDetailPage from "./pages/DeckDetailPage";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 import CardSearchPage from "./pages/CardSearchPage";
 import { homePageLoader } from "./pages/loaders";
+import { deckDetailPageLoader } from "./pages/loaders/DeckDetailPageLoader";
 
 export const routes = createRoutesFromElements(
   <Route path='/' element={<App/>}>
     <Route index element={<HomePage />} loader={homePageLoader}/>
     <Route path='card/:id' element={<CardDetailPage/>}/>
     <Route path='card/search' element={<CardSearchPage/>}/>
-    <Route path='deck/:id' element={<DeckDetailPage/>}/>
+    <Route path='deck/:id' element={<DeckDetailPage/>} loader={deckDetailPageLoader}/>
     <Route path='decks' element={<DeckListPage/>}/>
     <Route path='404' element={<PageNotFoundPage />} />
     <Route path="*" element={<Navigate to='404' />} />

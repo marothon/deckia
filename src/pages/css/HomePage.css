@@ -9,6 +9,8 @@
     width: 100%;
     height: 35rem;
     overflow: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
 
     .hero-bg{
       position: absolute;
@@ -110,6 +112,9 @@
     width: 100%;
     max-width: 1000px;
     margin: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+
 
     h1 {
       font-size: 4rem;
