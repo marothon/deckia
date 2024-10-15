@@ -1,4 +1,4 @@
-export default function PageNotFoundPage() {
+export function PageNotFoundPage() {
   return (
     <div>Page not found!</div>
   )

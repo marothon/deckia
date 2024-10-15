@@ -5,7 +5,7 @@ import './css/DeckDetailPage.css';
 import { useContext, useEffect } from "react";
 import { translateSymbols } from "../shared/data";
 
-export default function DeckDetailPage() {
+export function DeckDetailPage() {
   const pagedDeck: DeckData = useLoaderData() as DeckData;
   const {deck, changeDeck} = useContext(DeckContext);
 

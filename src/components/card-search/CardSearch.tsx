@@ -1,12 +1,13 @@
 import { FormEventHandler, forwardRef, Ref, useEffect, useState } from "react"
 import { CardData, ScryfallCardSearch } from "../../shared/interfaces";
-import { CardList, CardListTypeToggle } from "../card-list";
+import { CardList } from "../card-list";
 import './CardSearch.css';
+import { ListTypeToggle } from "../ui";
 
 export const CardSearch =  forwardRef(function CardSearch({title}: {title?: string}, ref: Ref<HTMLInputElement>){
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResult, setSearchResult] = useState<CardData[]>();
-  const [listType, setListType] = useState<'image'|'row'>('image');
+  const [listType, setListType] = useState<'card'|'row'>('card');
 
   useEffect(() => {
     const search = async () => {
@@ -47,7 +48,7 @@ export const CardSearch =  forwardRef(function CardSearch({title}: {title?: stri
     setSearchTerm(formData.get('search-term') as string);
   }
 
-  const onToggle = (listType: 'image'|'row') => {
+  const onToggle = (listType: 'card'|'row') => {
     setListType(listType);
   }
 
@@ -59,7 +60,7 @@ export const CardSearch =  forwardRef(function CardSearch({title}: {title?: stri
           <input ref={ref} name='search-term' type='text' placeholder="Search"/>
           <span className="search-indicator material-symbols-outlined">search</span>
         </div>
-        <CardListTypeToggle onToggle={onToggle} />
+        <ListTypeToggle onToggle={onToggle} />
       </form>
       { searchResult ? <CardList cards={searchResult} listType={listType} /> : '' }
     </div>

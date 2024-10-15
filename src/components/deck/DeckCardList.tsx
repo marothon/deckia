@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { CardList, CardListTypeToggle } from "../card-list"
+import { CardList } from "../card-list"
 import { DeckData } from "../../shared/interfaces";
-import './DeckCardList.css'
+import './css/DeckCardList.css'
+import { ListTypeToggle } from "../ui";
 
 export function DeckCardList({deck}: {deck: DeckData}) {
-  const [listType, setListType] = useState<'image'|'row'>('image');
+  const [listType, setListType] = useState<'card'|'row'>('card');
   
-  const onToggle = (listType: 'image'|'row') => {
+  const onToggle = (listType: 'card'|'row') => {
     setListType(listType);
   }
 
@@ -20,7 +21,7 @@ export function DeckCardList({deck}: {deck: DeckData}) {
           <input name='filter-term' type='text' placeholder="Filter"/>
           <span className="search-indicator material-symbols-outlined">search</span>
         </div>
-        <CardListTypeToggle onToggle={onToggle} />
+        <ListTypeToggle onToggle={onToggle} />
       </div>
       <CardList cards={cards} listType={listType} />
     </div>

@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import './Header.css';
+import './css/Header.css';
 import { useContext } from "react";
 import { DeckContext } from "../deck";
 
-export default function Header() {
+export function Header() {
   const {deck} = useContext(DeckContext);
 
   return (

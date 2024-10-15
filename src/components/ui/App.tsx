@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom'
-import './App.css'
-import Header from './Header'
+import './css/App.css'
+import { Header } from './'
 import { DeckProvider } from '../deck'
 
-function App() {
+export function App() {
   return (
     <DeckProvider>
       <Header />
@@ -13,5 +13,3 @@ function App() {
     </DeckProvider>
   )
 }
-
-export default App

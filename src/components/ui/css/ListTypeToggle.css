@@ -1,4 +1,4 @@
-.card-list-toggle {
+.list-type-toggle {
   display: grid;
   grid-template-columns:  1fr 1fr;
   width: 14rem;
@@ -15,7 +15,7 @@
     text-align: center;
   }
 
-  > .image {
+  > .card {
     border-radius: 1rem 0 0 1rem;
   }
 

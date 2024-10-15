@@ -1,5 +1,5 @@
 export class MapSerializerJSON{
-  static replacer(_, value: any) {
+  static replacer(_: any, value: any) {
     if(value instanceof Map) {
       return {
         dataType: 'Map',
@@ -10,7 +10,7 @@ export class MapSerializerJSON{
     }
   }
 
-  static reviver(_, value: any) {
+  static reviver(_: any, value: any) {
     if(typeof value === 'object' && value !== null) {
       if (value.dataType === 'Map') {
         return new Map(value.value);

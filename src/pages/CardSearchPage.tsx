@@ -1,4 +1,4 @@
-export default function CardSearchPage() {
+export function CardSearchPage() {
   return (
     <div>CardSearchPage</div>
   )

@@ -5,7 +5,7 @@ import './css/HomePage.css';
 import { useLoaderData } from 'react-router-dom';
 import { useRef } from 'react';
 
-export default function HomePage() {
+export function HomePage() {
   const card = useLoaderData() as CardData;
   const searchBar = useRef<HTMLInputElement>(null);
 

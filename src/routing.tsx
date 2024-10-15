@@ -1,13 +1,7 @@
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from "react-router-dom";
-import App from "./components/ui/App";
-import HomePage from "./pages/HomePage";
-import CardDetailPage from "./pages/CardDetailPage";
-import DeckListPage from "./pages/DeckListPage";
-import DeckDetailPage from "./pages/DeckDetailPage";
-import PageNotFoundPage from "./pages/PageNotFoundPage";
-import CardSearchPage from "./pages/CardSearchPage";
-import { homePageLoader } from "./pages/loaders";
-import { deckDetailPageLoader } from "./pages/loaders/DeckDetailPageLoader";
+import { App } from "./components/ui";
+import { CardDetailPage, CardSearchPage, DeckDetailPage, DeckListPage, HomePage, PageNotFoundPage } from "./pages";
+import { homePageLoader, deckDetailPageLoader, deckListPageLoader } from "./pages/loaders";
 
 export const routes = createRoutesFromElements(
   <Route path='/' element={<App/>}>
@@ -15,7 +9,7 @@ export const routes = createRoutesFromElements(
     <Route path='card/:id' element={<CardDetailPage/>}/>
     <Route path='card/search' element={<CardSearchPage/>}/>
     <Route path='deck/:id' element={<DeckDetailPage/>} loader={deckDetailPageLoader}/>
-    <Route path='decks' element={<DeckListPage/>}/>
+    <Route path='decks' element={<DeckListPage/>} loader={deckListPageLoader}/>
     <Route path='404' element={<PageNotFoundPage />} />
     <Route path="*" element={<Navigate to='404' />} />
   </Route>

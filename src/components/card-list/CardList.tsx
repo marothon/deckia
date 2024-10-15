@@ -5,7 +5,7 @@ import "./css/CardList.css";
 
 interface CardListProps{
   cards: CardData[],
-  listType: 'image' | 'row'
+  listType: 'card' | 'row'
 }
 
 export function CardList({cards, listType}: CardListProps) {
@@ -15,7 +15,7 @@ export function CardList({cards, listType}: CardListProps) {
         (
           <article key={cd.id} className='card-list-item'>
             {
-              listType == 'image' ?
+              listType == 'card' ?
               <Card card={cd} enableActions={true}/> :
               <CardListRow card={cd} />
             }

@@ -1,6 +1,6 @@
 .card-list {
 
-  &.image{
+  &.card{
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;

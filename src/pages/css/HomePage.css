@@ -124,7 +124,7 @@
   }
 
   .search {
-    min-height: 30rem;
+    min-height: 100vh;
   }
 
   p {

@@ -1,4 +1,4 @@
-export default function CardDetailPage() {
+export function CardDetailPage() {
   return (
     <div>CardDetailPage</div>
   )
