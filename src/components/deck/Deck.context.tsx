@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useRef, useState } from "react"
 import { CardData, DeckData } from "../../shared/interfaces";
-import { MapSerializerJSON } from "../../shared/util";
+import { DeckStorage } from "../../shared/data";
 
 
 interface DeckContextValue {
@@ -22,18 +22,13 @@ export function DeckProvider({children}: {children: ReactNode}) {
   const deckIdentity = useRef<number>(1);
 
   useEffect(() => {
-    let decks: DeckData[] = JSON.parse(window.localStorage.getItem('decks') as string, MapSerializerJSON.reviver);
-    if(decks){
-      deckIdentity.current = decks.length + 1;
-      if(currentDeck){
-        decks[currentDeck!.id-1] = currentDeck!;
-        window.localStorage.setItem('decks', JSON.stringify(decks, MapSerializerJSON.replacer));
-      }
-    } else {
-      if(currentDeck){
-        currentDeck!.id = 1;
-        window.localStorage.setItem('decks', JSON.stringify([currentDeck], MapSerializerJSON.replacer));
-      }
+    deckIdentity.current = DeckStorage.all().length + 1;
+    console.log(deckIdentity.current);  
+  }, []);
+
+  useEffect(() => {
+    if(currentDeck){
+      DeckStorage.save(currentDeck);
     }
   }, [currentDeck]);
 
