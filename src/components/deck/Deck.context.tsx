@@ -7,7 +7,7 @@ interface DeckContextValue {
   deck: DeckData | undefined,
   addCard: (card: CardData) => void,
   removeCard: (card: CardData) => void,
-  changeDeck: (deck: DeckData) => void
+  changeDeck: (deck?: DeckData) => void
 }
 
 export const DeckContext = createContext<DeckContextValue>({
@@ -22,8 +22,12 @@ export function DeckProvider({children}: {children: ReactNode}) {
   const deckIdentity = useRef<number>(1);
 
   useEffect(() => {
-    deckIdentity.current = DeckStorage.all().length + 1;
-    console.log(deckIdentity.current);  
+    const decks = DeckStorage.all();
+    if(decks){
+      deckIdentity.current = Math.max(...decks.map(d => d.id)) + 1;
+    } else {
+      deckIdentity.current = 1;
+    }
   }, []);
 
   useEffect(() => {
@@ -108,7 +112,8 @@ export function DeckProvider({children}: {children: ReactNode}) {
     });
   }
 
-  const changeDeck = (deck: DeckData) => {
+  // Leaving deck empty removes currentDeck
+  const changeDeck = (deck?: DeckData) => {
     setCurrentDeck(deck);
   }
 

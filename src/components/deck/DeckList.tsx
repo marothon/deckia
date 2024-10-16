@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import { translateSymbols } from "../../shared/data";
+import { DeckStorage, translateSymbols } from "../../shared/data";
 import { DeckData } from "../../shared/interfaces";
 import './css/DeckList.css';
+import { MouseEventHandler, useContext } from "react";
+import { DeckContext } from "./";
 
-export function DeckList({decks, listType}: {decks: DeckData[], listType: 'card' | 'row'}) {
-
+export function DeckList({decks, listType, onDeckRemoval}: {decks: DeckData[], listType: 'card' | 'row', onDeckRemoval?: Function}) {
+  const {deck, changeDeck} = useContext(DeckContext);
+  
   const colorIdentity = (d: DeckData) => {
     return (
       <div className='color-identity'>{
@@ -15,6 +18,21 @@ export function DeckList({decks, listType}: {decks: DeckData[], listType: 'card'
         }
       </div>
     );
+  }
+
+  const removeDeck = (d: DeckData): MouseEventHandler<HTMLSpanElement>  => {
+    return () => {
+      const confirmed: boolean = confirm("Are you sure? You cannot undo this!");
+      if(confirmed){
+        DeckStorage.delete(d);
+        if(onDeckRemoval){
+          onDeckRemoval(d);
+        }
+        if(deck && deck.id == d.id){
+          changeDeck();
+        }
+      } 
+    }
   }
 
   return (
@@ -51,7 +69,7 @@ export function DeckList({decks, listType}: {decks: DeckData[], listType: 'card'
             }
             <section className='deck-actions'>
               <Link to={`/deck/${d.id}`}className='material-symbols-outlined'>edit_square</Link>
-              <span className='material-symbols-outlined'>delete</span>
+              <span onClick={removeDeck(d)} className='material-symbols-outlined'>delete</span>
             </section>
           </article>
           )

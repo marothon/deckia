@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 import { DeckData } from "../shared/interfaces";
 import { DeckCardList, DeckContext } from "../components/deck";
 import './css/DeckDetailPage.css';
@@ -8,8 +8,12 @@ import { translateSymbols } from "../shared/data";
 export function DeckDetailPage() {
   const pagedDeck: DeckData = useLoaderData() as DeckData;
   const {deck, changeDeck} = useContext(DeckContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if(!pagedDeck){
+      navigate('/404');
+    }
     changeDeck(pagedDeck);
   }, []);
 
