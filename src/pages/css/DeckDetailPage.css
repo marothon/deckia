@@ -39,7 +39,7 @@
     }
   }
 
-  & > .cmc-chart {
+  & > .mana-cost-chart {
     margin: auto auto 2.5rem auto;
     width: 70%;
     height: 30rem;
