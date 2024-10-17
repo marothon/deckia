@@ -20,6 +20,7 @@
         & > h3 {
           font-size: 1.5rem;
           margin: 0;
+          text-align: center;
         }
 
         & > .color-identity {
@@ -50,15 +51,16 @@
 
     & > .deck-list-item {
       display: grid;
-      grid-template-columns: 1fr 2fr 3fr 1fr;
+      grid-template-columns: 1.5fr 2fr 3fr 1fr;
       gap: 1rem;
       background-color: #D9D9D9;
-      padding: 0 0.75rem 0 0.75rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
       border-radius: 0.5rem;
       box-shadow: 0px 4px 2px 1px rgba(0, 0, 0, 0.1);
 
       & > .deck-banner {
-        margin: auto;
+        margin-top: auto;
+        margin-bottom: auto;
         & > .deck-name {
           text-align: left;
           font-size: 1.3rem;
