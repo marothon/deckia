@@ -1,7 +1,9 @@
+import reactStringReplace from 'react-string-replace';
+
 export function translateSymbols(symbols: string){
-  return symbols.match(/({.*?})/g)?.map((b, i) => {
-    return <img key={i} src={symbology.get(b)!.svg_uri} />;
-  });
+  return reactStringReplace(symbols, /({.*?})/g, (match, i) => {
+    return <img key={i} src={symbology.get(match)!.svg_uri} />
+  })  
 }
 
 const symbology: Map<string, any> = new Map(Object.entries({
