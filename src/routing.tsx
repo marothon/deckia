@@ -1,12 +1,12 @@
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from "react-router-dom";
 import { App } from "./components/ui";
 import { CardDetailPage, CardSearchPage, DeckDetailPage, DeckListPage, HomePage, PageNotFoundPage } from "./pages";
-import { homePageLoader, deckDetailPageLoader, deckListPageLoader } from "./pages/loaders";
+import { homePageLoader, deckDetailPageLoader, deckListPageLoader, cardDetailPageLoader } from "./pages/loaders";
 
 export const routes = createRoutesFromElements(
   <Route path='/' element={<App/>}>
     <Route index element={<HomePage />} loader={homePageLoader}/>
-    <Route path='card/:id' element={<CardDetailPage/>}/>
+    <Route path='card/:id' element={<CardDetailPage/>} loader={cardDetailPageLoader}/>
     <Route path='card/search' element={<CardSearchPage/>}/>
     <Route path='deck/:id' element={<DeckDetailPage/>} loader={deckDetailPageLoader}/>
     <Route path='decks' element={<DeckListPage/>} loader={deckListPageLoader}/>
