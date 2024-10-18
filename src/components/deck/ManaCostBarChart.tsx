@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CardData, DeckData } from "../../shared/interfaces";
 import { Bar, BarChart, Legend, ResponsiveContainer, XAxis } from "recharts";
+import './css/ManaCostBarChart.css';
 
 interface ManaCostBarData {
   cmcLabel: string,
@@ -8,7 +9,8 @@ interface ManaCostBarData {
   instant: number,
   sorcery: number,
   artifact: number,
-  enchantment: number
+  enchantment: number,
+  other: number
 }
 
 export function ManaCostBarChart({deck, className}: {deck: DeckData, className?: string}) {
@@ -24,7 +26,8 @@ export function ManaCostBarChart({deck, className}: {deck: DeckData, className?:
           instant: 0,
           sorcery: 0, 
           artifact: 0,
-          enchantment: 0
+          enchantment: 0,
+          other: 0
         }
       }
       groupedByCMC[8].cmcLabel = '8+';
@@ -36,11 +39,13 @@ export function ManaCostBarChart({deck, className}: {deck: DeckData, className?:
         
         if(typeof cmc !== 'undefined'){
           let idx = cmc < 8 ? cmc : 8;
-          if(card.type_line.toLowerCase().includes('creature')) groupedByCMC[idx].creature += count;
-          if(card.type_line.toLowerCase().includes('sorcery')) groupedByCMC[idx].sorcery += count;
-          if(card.type_line.toLowerCase().includes('instant')) groupedByCMC[idx].instant += count;
-          if(card.type_line.toLowerCase().includes('artifact')) groupedByCMC[idx].artifact += count;
-          if(card.type_line.toLowerCase().includes('enchantment')) groupedByCMC[idx].enchantment += count;
+          let categoryCount: number = 0;
+          if(card.type_line.toLowerCase().includes('creature') && ++categoryCount) groupedByCMC[idx].creature += count;
+          if(card.type_line.toLowerCase().includes('sorcery') && ++categoryCount) groupedByCMC[idx].sorcery += count;
+          if(card.type_line.toLowerCase().includes('instant') && ++categoryCount) groupedByCMC[idx].instant += count;
+          if(card.type_line.toLowerCase().includes('artifact') && ++categoryCount) groupedByCMC[idx].artifact += count;
+          if(card.type_line.toLowerCase().includes('enchantment') && ++categoryCount) groupedByCMC[idx].enchantment += count;
+          if(categoryCount == 0) groupedByCMC[idx].other += count;
         }
       }
       setBarData(groupedByCMC);
@@ -65,11 +70,13 @@ export function ManaCostBarChart({deck, className}: {deck: DeckData, className?:
           >
             <XAxis label={{ value: "CMC (Converted Mana Cost)", position: "bottom", offset: 10 }}  tickLine={false} axisLine={false} dataKey="cmcLabel"/>
             <Legend layout="vertical" align="right" verticalAlign="middle"/>
-            <Bar dataKey="creature" stackId="a" fill="#9DFF9B" />
+            <Bar dataKey="creature" stackId="a" fill="#936422" />
             <Bar dataKey="sorcery" stackId="a" fill="#4125ce" />
-            <Bar dataKey="instant" stackId="a" fill="#FF7878" />
-            <Bar dataKey="artifact" stackId="a" fill="#b7b7b7" />
-            <Bar dataKey="enchantment" stackId="a" fill="#2f891f" />
+            <Bar dataKey="instant" stackId="a" fill="#d3551b" />
+            <Bar dataKey="artifact" stackId="a" fill="#4c4c4c" />
+            <Bar dataKey="enchantment" stackId="a" fill="#229364" />
+            <Bar dataKey="other" stackId="a" fill="#efdf28" />
+
           </BarChart>
           </ResponsiveContainer>
         :
