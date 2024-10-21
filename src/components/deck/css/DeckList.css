@@ -19,6 +19,7 @@
 
         & > h3 {
           font-size: 1.5rem;
+          font-weight: 400;
           margin: 0;
           text-align: center;
         }
@@ -65,10 +66,11 @@
       & > .deck-banner {
         margin-top: auto;
         margin-bottom: auto;
+        
         & > .deck-name {
           text-align: left;
           font-size: 1.3rem;
-          font-weight: 300;
+          font-weight: 400;
         }
       }
 

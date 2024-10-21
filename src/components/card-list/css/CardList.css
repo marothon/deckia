@@ -1,4 +1,5 @@
 .card-list {
+  container-type: inline-size;  
 
   &.card{
     display: flex;

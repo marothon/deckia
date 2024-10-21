@@ -11,6 +11,10 @@
     text-align: left;
     font-size: 1.3rem;
     font-weight: 300;
+
+    & > a:hover {
+      text-decoration: underline;
+    }
   }
 
   & > .card-list-row-actions{
@@ -56,6 +60,40 @@
   
       img {
         width: 1.5rem;
+      }
+    }
+  }
+}
+
+@container (max-width: 900px) {
+  .card-list-row {
+    grid-template-columns: 4fr 1fr 1fr 1fr;
+
+    & > p.card-name {
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    & > p.card-type {
+      display: none;
+    }
+
+    & > .card-list-row-actions{
+      grid-column: 4;
+      margin: auto;
+      color: black;
+      font-size: 2rem;
+      font-weight: 300;
+    }
+
+    .mana-cost {
+      grid-column: 2 / span 2;
+      align-items: center;
+  
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
       }
     }
   }

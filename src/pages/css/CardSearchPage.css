@@ -1,0 +1,42 @@
+.card-search-page {
+  display: grid;
+  padding: 1rem;
+  box-sizing: border-box;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: auto;
+
+  .card-search {
+    h1 {
+      font-size: 3rem;
+      font-weight: 400;
+    }
+  }
+
+  .deck-edit {
+    h2 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+  }
+}
+
+@media (max-width: 1000px){
+  .card-search-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .deck-edit {
+      .card-list {
+          max-height: 20rem;
+          overflow: scroll;
+          padding-bottom: 1rem;
+          box-sizing: border-box;
+      }
+    }
+  }
+}
