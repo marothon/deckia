@@ -10,7 +10,7 @@ export function DeckDetailPage() {
   const {deck, changeDeck} = useContext(DeckContext);
   const navigate = useNavigate();
   const [isEditingName, setIsEditingName] = useState<boolean>(false);
-  const [deckName, setDeckName] = useState<string>(pagedDeck.name);
+  const [deckName, setDeckName] = useState<string>(pagedDeck?.name);
   const deckNameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -37,6 +37,10 @@ export function DeckDetailPage() {
       setDeckName(formData.get("deckName") as string);
       setIsEditingName(false);
     }
+  }
+
+  if(!pagedDeck) {
+    return <></>
   }
   
   return (

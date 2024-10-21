@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 import { CardData, DeckData, ImageUris, ScryfallCard } from "../shared/interfaces"
 import './css/CardDetailPage.css'
 import { DeckStorage, translateSymbols } from "../shared/data";
@@ -11,6 +11,8 @@ export function CardDetailPage() {
   const card: ScryfallCard = useLoaderData() as ScryfallCard;
   const [usedInDecks, setUsedInDecks] = useState<DeckData[]>();
   const isMobileWidth = useMediaQuery('(max-width: 1000px)')
+  const navigate = useNavigate();
+
   
   const capitalize = (word: string) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -21,9 +23,18 @@ export function CardDetailPage() {
   }
 
   useEffect(() => {
-    const allDecks = DeckStorage.all();
-    setUsedInDecks(allDecks.filter(d => d.cards.has(card.id)));
+    if(card){
+      const allDecks = DeckStorage.all();
+      setUsedInDecks(allDecks.filter(d => d.cards.has(card.id)));
+    } else {
+      navigate('/404');
+    }
   }, []);
+
+
+  if(!card) {
+    return <></>
+  }
 
   // TODO: This should be handled better, i.e. be able to flip the card to see the other face
   let img_uris: ImageUris;
