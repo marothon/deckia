@@ -121,6 +121,17 @@
       font-weight: 400;
       margin-bottom: 0;
     }
+
+    & a {
+      font-size: 1.75rem;
+      text-align: left;
+      font-weight: 400;
+      text-decoration: underline;
+
+      &:hover {
+        color: #565555;
+      }
+    }
   }
 
   .search {
