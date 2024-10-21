@@ -16,6 +16,11 @@ export const CardSearch =  forwardRef(function CardSearch({title}: {title?: stri
         const responseJson = await response.json() as ScryfallCardSearch;
         setSearchResult(responseJson.data.map(c => {
           if(!c.image_uris && c.card_faces) {
+            // TODO: Should check properly if card is Alchemly (thus the A- prefix on the card naame)
+            if(c.card_faces[0].name.slice(0, 2) == 'A-'){
+              c.card_faces[0].name = c.card_faces[0].name.slice(2);
+            }
+
             return {
               id: c.id,
               name: c.card_faces[0].name,
@@ -27,6 +32,10 @@ export const CardSearch =  forwardRef(function CardSearch({title}: {title?: stri
               keywords: c.keywords
               } as CardData;
           } else {
+             // TODO: Should check properly if card is Alchemly (thus the A- prefix on the card naame)
+             if(c.name.slice(0, 2) == 'A-'){
+              c.name = c.name.slice(2);
+            }
             return {
               id: c.id,
               name: c.name,

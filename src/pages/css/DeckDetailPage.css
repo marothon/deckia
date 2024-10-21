@@ -83,3 +83,12 @@
     height: 30rem;
   }
 }
+
+@media (max-width: 1000px) {
+  .deck-detail-page{
+    & > .mana-cost-chart {
+      width: 100%;
+    }
+  }
+  
+}

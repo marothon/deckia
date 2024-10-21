@@ -28,3 +28,10 @@
     background-color: #9C9C9C;
   }
 }
+
+@media (max-width: 900px){
+  .list-type-toggle {
+    font-size: 1.25rem;
+    width: 10rem;
+  }
+}

@@ -4,10 +4,12 @@ import { CardData } from '../shared/interfaces';
 import './css/HomePage.css';
 import { useLoaderData } from 'react-router-dom';
 import { useRef } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 
 export function HomePage() {
   const card = useLoaderData() as CardData;
   const searchBar = useRef<HTMLInputElement>(null);
+  const isMobileWidth = useMediaQuery('(max-width: 900px)')
 
   const onSearchActionClick = () => {
     searchBar.current?.focus();
@@ -19,14 +21,32 @@ export function HomePage() {
       <section className="hero">
         <img className="hero-bg" />
         <section className="call-to-action">
-          <section className="description">
-            <h1>Explore, choose and build</h1>
-            <p>Search among thousands of MTG cards and create your own personal decks!</p>
-            <div className='search-action'>
-              <button onClick={onSearchActionClick}>Search <span className='material-symbols-outlined'>search</span></button>
-            </div>
-          </section>
-          <Card className='hero-card' card={card} />
+          {
+            isMobileWidth ?
+            <>
+              <section className="description">
+                <h1>Explore, choose and build</h1>
+                <Card className='hero-card' card={card} />
+                <p>Search among thousands of MTG cards and create your own personal decks!</p>
+                <div className='search-action'>
+                  <button onClick={onSearchActionClick}>Search <span className='material-symbols-outlined'>search</span></button>
+                </div>
+              </section>
+              
+              </>
+            :
+            <>
+              <section className="description">
+                <h1>Explore, choose and build</h1>
+                <p>Search among thousands of MTG cards and create your own personal decks!</p>
+                <div className='search-action'>
+                  <button onClick={onSearchActionClick}>Search <span className='material-symbols-outlined'>search</span></button>
+                </div>
+              </section>
+              <Card className='hero-card' card={card} />
+            </>
+          }
+          
         </section>
       </section>
       <section className="about">
@@ -42,6 +62,7 @@ export function HomePage() {
             <li><a target="_blank" href="https://reactrouter.com/en/main">React Router</a></li>
             <li><a target="_blank" href="https://recharts.org/en-US/">Recharts</a></li>
             <li><a target="_blank" href="https://www.npmjs.com/package/react-string-replace">React String Replace</a></li>
+            <li><a target="_blank" href="https://usehooks-ts.com/">usehooks-ts</a></li>
           </ul> 
         </section>
         <p>
@@ -49,7 +70,7 @@ export function HomePage() {
         </p>
       </section>
       <section className="search">
-        <CardSearch ref={searchBar} title='Search'/>
+        <CardSearch ref={searchBar} title={isMobileWidth ? '' : 'Search'}/>
       </section>
     </div>
   )

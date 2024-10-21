@@ -110,3 +110,11 @@
     }
   }
 }
+
+@media (max-width: 1000px) {
+  .deck-list {
+    &.card {
+      gap: 0.75rem;
+    }
+  }
+}

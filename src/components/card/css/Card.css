@@ -1,5 +1,4 @@
 .mtg-card {
-
   .mtg-card-inner{
     display: grid;
     transform-style: preserve-3d;
@@ -53,3 +52,12 @@
   }
 }
 
+@media (max-width: 900px) {
+  .mtg-card {
+    .mtg-card-inner {
+        .mtg-card-actions {
+          opacity: 1;
+        }
+    }
+  }
+}

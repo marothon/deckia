@@ -4,9 +4,11 @@ import { DeckData } from "../../shared/interfaces";
 import './css/DeckList.css';
 import { MouseEventHandler, useContext } from "react";
 import { DeckContext } from "./";
+import { useMediaQuery } from "usehooks-ts";
 
 export function DeckList({decks, listType, onDeckRemoval}: {decks: DeckData[], listType: 'card' | 'row', onDeckRemoval?: Function}) {
   const {deck, changeDeck} = useContext(DeckContext);
+  const isMobileWidth = useMediaQuery('(max-width: 1000px)');
   
   const colorIdentity = (d: DeckData) => {
     return (
@@ -54,7 +56,7 @@ export function DeckList({decks, listType, onDeckRemoval}: {decks: DeckData[], l
               ''
             }
             {
-              listType == 'row' ?
+              listType == 'row' && !isMobileWidth ?
               (
                 <section className='tags'>
                   {

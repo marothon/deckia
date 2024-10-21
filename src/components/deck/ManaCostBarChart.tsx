@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { CardData, DeckData } from "../../shared/interfaces";
 import { Bar, BarChart, Legend, ResponsiveContainer, XAxis } from "recharts";
 import './css/ManaCostBarChart.css';
+import { useMediaQuery } from "usehooks-ts";
+import { LayoutType } from "recharts/types/util/types";
+import { HorizontalAlignmentType, VerticalAlignmentType } from "recharts/types/component/DefaultLegendContent";
 
 interface ManaCostBarData {
   cmcLabel: string,
@@ -15,6 +18,7 @@ interface ManaCostBarData {
 
 export function ManaCostBarChart({deck, className}: {deck: DeckData, className?: string}) {
   const [barData, setBarData] = useState<ManaCostBarData[]>();
+  const isMobileWidth = useMediaQuery('(max-width: 1000px)');
 
   useEffect(() => {
     if(deck){
@@ -53,8 +57,15 @@ export function ManaCostBarChart({deck, className}: {deck: DeckData, className?:
     }
   }, [deck]);
 
+  const legendLayout = 
+    {
+      layout: isMobileWidth ? 'horizontal' : 'vertical' as LayoutType,
+      align: isMobileWidth ? 'center' : 'left' as HorizontalAlignmentType,
+      verticalAlign: isMobileWidth ? 'top' : 'middle' as VerticalAlignmentType
+    }
+
   return (
-    <section className={`mana-cost-chart ${className}`}>
+    <section className={`mana-cost-chart ${className ? className : ''}`}>
       {
         barData ? 
           <ResponsiveContainer width="100%" height="100%">
@@ -70,7 +81,11 @@ export function ManaCostBarChart({deck, className}: {deck: DeckData, className?:
             }}
           >
             <XAxis label={{ value: "CMC (Converted Mana Cost)", position: "bottom", offset: 10 }}  tickLine={false} axisLine={false} dataKey="cmcLabel"/>
-            <Legend layout="vertical" align="right" verticalAlign="middle"/>
+            <Legend 
+              layout={legendLayout.layout}
+              align={legendLayout.align}
+              verticalAlign={legendLayout.verticalAlign}
+            />
             <Bar dataKey="creature" stackId="a" fill="#936422" />
             <Bar dataKey="sorcery" stackId="a" fill="#4125ce" />
             <Bar dataKey="instant" stackId="a" fill="#d3551b" />

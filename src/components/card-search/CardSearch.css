@@ -1,5 +1,6 @@
 .card-search {
   margin-bottom: 4rem;
+
   form {
     display: flex;
     align-items: center;
@@ -7,7 +8,9 @@
     gap: 2rem;
     margin-bottom: 2rem;
 
-    h1 {
+    > h1 {
+      font-size: 4rem;
+      font-weight: 400;
       margin: 0;
     }
 
@@ -39,6 +42,21 @@
         font-size: 2.5rem;
         font-weight: 600;
         margin: auto 1rem auto auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px){
+  .card-search {
+    form {
+      input {
+        font-size: 1.25rem;
+      }
+      .search-bar {
+        .search-indicator {
+          font-size: 1.5rem;
+        }
       }
     }
   }

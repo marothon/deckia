@@ -25,7 +25,6 @@
       filter: blur(0.5rem); 
       transform: scale(1.05); /* A tiny transformm to avoid blurry edges */
       opacity: 0.75;
-
     }
 
     .call-to-action {
@@ -114,8 +113,9 @@
     margin: auto;
     padding: 1rem;
     box-sizing: border-box;
-
-
+  }
+  
+  .about {
     h1 {
       font-size: 4rem;
       font-weight: 400;
@@ -132,16 +132,73 @@
         color: #565555;
       }
     }
+
+    p {
+      font-size: 1.75rem;
+      font-weight: 250;
+      text-align: justify;
+    }
   }
 
   .search {
     min-height: 100vh;
   }
 
-  p {
-    font-size: 1.75rem;
-    font-weight: 250;
-    text-align: justify;
+}
+
+@media (max-width: 900px){
+  .home-page{
+    .about {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p, a {
+        font-size: 1.4rem;
+      }
+    }
+
+    .hero {
+      height: fit-content;
+
+      .hero-bg {
+        transform: scale(1.13); /* A tiny transformm to avoid blurry edges */
+      }
+
+      .call-to-action {
+        flex-direction: column;
+
+        .description {
+          gap: 1rem;
+          width: 100%;
+
+          h1 {
+            margin: 0;
+            font-size: 2rem;
+          }
+
+          p {
+            font-size: 1.5rem;
+            text-align: center;
+          }
+
+          & > .search-action {
+            display: flex;
+            flex: 1;
+            place-items: center;
+  
+            & > button {
+              font-size: 1.5rem;
+              padding: 1rem 2rem 1rem 2rem;
+            }
+          }
+        }
+
+        .hero-card {
+          width: 90%;
+        }
+      }
+    }
   }
 }
 
