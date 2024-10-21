@@ -45,7 +45,8 @@ export function ManaCostBarChart({deck, className}: {deck: DeckData, className?:
           if(card.type_line.toLowerCase().includes('instant') && ++categoryCount) groupedByCMC[idx].instant += count;
           if(card.type_line.toLowerCase().includes('artifact') && ++categoryCount) groupedByCMC[idx].artifact += count;
           if(card.type_line.toLowerCase().includes('enchantment') && ++categoryCount) groupedByCMC[idx].enchantment += count;
-          if(categoryCount == 0) groupedByCMC[idx].other += count;
+
+          if(categoryCount == 0 && !card.type_line.toLowerCase().includes('land')) groupedByCMC[idx].other += count;
         }
       }
       setBarData(groupedByCMC);
