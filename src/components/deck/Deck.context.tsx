@@ -23,7 +23,7 @@ export function DeckProvider({children}: {children: ReactNode}) {
 
   useEffect(() => {
     const decks = DeckStorage.all();
-    if(decks){
+    if(decks && decks.length > 0){
       deckIdentity.current = Math.max(...decks.map(d => d.id)) + 1;
     } else {
       deckIdentity.current = 1;

@@ -16,7 +16,7 @@ export function Header() {
           deck ? <NavLink to={`deck/${deck.id}`}>{deck.name}</NavLink> : ''
         }
         <NavLink to='decks'>Decks</NavLink>
-        <NavLink to='card/search'>Search</NavLink>
+        <NavLink to='card/search'>Build</NavLink>
       </nav>
     </header>
   )
