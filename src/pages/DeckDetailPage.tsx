@@ -42,6 +42,16 @@ export function DeckDetailPage() {
   if(!pagedDeck) {
     return <></>
   }
+
+  const countCards = () => {
+    let cardCount: number = 0;
+    if(deck){
+      for(const [_, {count}] of deck?.cards.entries()){
+        cardCount += count;
+      }
+    }
+    return cardCount;
+  }
   
   return (
     <div className='deck-detail-page'>
@@ -80,6 +90,7 @@ export function DeckDetailPage() {
             }
           </section>
           <ManaCostBarChart deck={deck} />
+          <h1>{countCards()} cards</h1>
           <DeckCardList deck={deck} />
         </> :
         'Loading'

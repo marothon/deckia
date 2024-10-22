@@ -8,6 +8,7 @@
   box-shadow: 0px 4px 2px 1px rgba(0, 0, 0, 0.1);
 
   & > p.card-name, & > p.card-type {
+    margin: auto auto auto 0;
     text-align: left;
     font-size: 1.3rem;
     font-weight: 300;
